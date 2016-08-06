@@ -87,7 +87,7 @@ def on_session_ended(session_ended_request, session):
 def getNewFact
 
 def getWorkshopInfo(intent,session):
-    card_title = "MLH"
+    card_title = "MLH Prime @ Bell Works"
     session_attributes = {}
     should_end_session = True
     

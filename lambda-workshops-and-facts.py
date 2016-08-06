@@ -97,7 +97,7 @@ def on_session_ended(session_ended_request, session):
 # --------------- Functions that control the skill's behavior ------------------
 
 def getNewFact():
-    card_title = "MLH"
+    card_title = "MLH Prime @ Bell Works"
     session_attributes = {}
     should_end_session = True
 
