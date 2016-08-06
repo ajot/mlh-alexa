@@ -1,4 +1,14 @@
 GetFactIntent tell me about bell works
+GetFactIntent tell me more about bell works
+GetFactIntent tell me more
+GetFactIntent give me more
+GetFactIntent fact
+GetFactIntent awesome
+GetFactIntent another one
+GetFactIntent one more
+GetFactIntent give me another one
+
+GetFactIntent what is bell works
 
 GetWorkshopInfoIntent what time is the workshop for {Company}
 GetWorkshopInfoIntent what time is the {Company} workshop

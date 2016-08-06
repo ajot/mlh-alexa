@@ -62,7 +62,8 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    return getWorkshopInfo(intent, session)
+    # return getWorkshopInfo(intent, session)
+    return getWelcomeMessage()
 
 
 def on_intent(intent_request, session):
@@ -79,6 +80,10 @@ def on_intent(intent_request, session):
         return getWorkshopInfo(intent, session)
     elif intent_name == "GetFactIntent":
         return getNewFact()
+    elif intent_name == "AMAZON.StopIntent":
+        return getGoodByeMessage()                
+    elif intent_name == "AMAZON.CancelIntent":
+        return getGoodByeMessage()        
     else:
         raise ValueError("Invalid intent")
 
@@ -94,24 +99,47 @@ def on_session_ended(session_ended_request, session):
 
 # --------------- Functions that control the skill's behavior ------------------
 
-def getNewFact():
+def getWelcomeMessage():
+    card_title = "MLH Prime @ Bell Works"
+    session_attributes = {}
+    should_end_session = False
+    
+    fact = "This iconic building, designed in the 1960s by Eero Saarinen, once housed some of the best minds in science who performed fundamental work on communications systems."
+    speech_output = fact
+    reprompt_text = "You can ask me for another fact about Bell Works by saying - tell more more"
+
+    return build_response(session_attributes, build_speechlet_response(
+                    card_title, speech_output, reprompt_text, should_end_session))
+
+def getGoodByeMessage():
     card_title = "MLH Prime @ Bell Works"
     session_attributes = {}
     should_end_session = True
-
-    fact = facts[random.randint(0,len(facts))]
-
+    
+    fact = "Good Bye. I can't wait to see what you all build in the next 24 hours at this iconic venue. Happy hacking!"
     speech_output = fact
     reprompt_text = None
 
     return build_response(session_attributes, build_speechlet_response(
                     card_title, speech_output, reprompt_text, should_end_session))
+
     
+def getNewFact():
+    card_title = "MLH Prime @ Bell Works"
+    session_attributes = {}
+    should_end_session = False
+
+    fact = facts[random.randint(0,len(facts))]
+    speech_output = fact
+    reprompt_text = "You can ask me for another fact about Bell Works by saying - tell me more about bell works"
+
+    return build_response(session_attributes, build_speechlet_response(
+                    card_title, speech_output, reprompt_text, should_end_session))
 
 def getWorkshopInfo(intent,session):
     card_title = "MLH"
     session_attributes = {}
-    should_end_session = True
+    should_end_session = False
     
     if 'Company' in intent['slots']:
         print("company was found")
@@ -120,7 +148,9 @@ def getWorkshopInfo(intent,session):
         print(dict[company_name])
         workshop_details = dict[company_name]
         speech_output = workshop_details
-        reprompt_text = None
+        # reprompt_text = None
+        reprompt_text = "You can ask me about workshops at MLH by saying, " \
+                        "What time is the workshop for Amazon?"
     else:
         print("company was not found")
         speech_output = "I'm not sure about that workshop." \

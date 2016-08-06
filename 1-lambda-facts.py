@@ -53,7 +53,7 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    return getNewFact()
+    return getWelcomeMessage()
 
 
 def on_intent(intent_request, session):
@@ -83,15 +83,26 @@ def on_session_ended(session_ended_request, session):
 
 # --------------- Functions that control the skill's behavior ------------------
 
+def getWelcomeMessage():
+    card_title = "MLH Prime @ Bell Works"
+    session_attributes = {}
+    should_end_session = False
+    
+    fact = "This iconic building, designed in the 1960s by Eero Saarinen, once housed some of the best minds in science who performed fundamental work on communications systems."
+    speech_output = fact
+    reprompt_text = "You can ask me for another fact about Bell Works by saying - tell more more"
+
+    return build_response(session_attributes, build_speechlet_response(
+                    card_title, speech_output, reprompt_text, should_end_session))
+
 def getNewFact():
     card_title = "MLH Prime @ Bell Works"
     session_attributes = {}
-    should_end_session = True
+    should_end_session = False
 
     fact = facts[random.randint(0,len(facts))]
-
     speech_output = fact
-    reprompt_text = None
+    reprompt_text = "You can ask me for another fact about Bell Works by saying - tell me more about bell works"
 
     return build_response(session_attributes, build_speechlet_response(
                     card_title, speech_output, reprompt_text, should_end_session))
