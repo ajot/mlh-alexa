@@ -1,0 +1,26 @@
+{
+  "intents": [
+    {
+      "intent": "GetWorkshopInfoIntent",
+      "slots": [
+        {
+          "name": "Company",
+          "type": "LIST_OF_COMPANIES"
+        }
+      ]
+    },
+    {
+      "intent": "GetFactIntent"
+    },
+	
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

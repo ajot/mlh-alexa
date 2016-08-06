@@ -1,0 +1,14 @@
+GetFactIntent tell me about bell works
+
+GetWorkshopInfoIntent what time is the workshop for {Company}
+GetWorkshopInfoIntent what time is the {Company} workshop
+GetWorkshopInfoIntent what time is the {Company} talk
+GetWorkshopInfoIntent what time is {Company} speaking
+
+GetWorkshopInfoIntent when is {Company} speaking
+GetWorkshopInfoIntent when is {Company} talking
+GetWorkshopInfoIntent when is {Company} presenting
+
+
+
+
