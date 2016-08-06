@@ -104,9 +104,9 @@ def getWelcomeMessage():
     session_attributes = {}
     should_end_session = False
     
-    fact = "This iconic building, designed in the 1960s by Eero Saarinen, once housed some of the best minds in science who performed fundamental work on communications systems."
+    fact = "Welcome to Major League Hacking Prime at Bell Works. The Bell Labs Holmdel Complex functioned for forty-four years as a research and development facility, initially for the Bell System. I am so excited to be here."
     speech_output = fact
-    reprompt_text = "You can ask me for another fact about Bell Works by saying - tell more more"
+    reprompt_text = "You can ask me for another fact about Bell Works by saying - tell me more"
 
     return build_response(session_attributes, build_speechlet_response(
                     card_title, speech_output, reprompt_text, should_end_session))
