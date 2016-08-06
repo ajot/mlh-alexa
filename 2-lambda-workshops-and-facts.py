@@ -62,7 +62,6 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    # return get_stocks()
     return getWorkshopInfo(intent, session)
 
 
@@ -77,7 +76,6 @@ def on_intent(intent_request, session):
 
     # Dispatch to your skill's intent handlers
     if intent_name == "GetWorkshopInfoIntent":
-        # return get_stocks()
         return getWorkshopInfo(intent, session)
     elif intent_name == "GetFactIntent":
         return getNewFact()
